@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD Users Folder Security Group - Search Result</title>
+    <link rel="shortcut icon" href="/static/favicon.jpg">
+    <script src="static/stackpath/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="static/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="static/stackpath/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">\
+    <link rel="stylesheet" href="static/style.css">
+    <script>
+    function copy(data) {
+     /* Get the text field */
+      let security = data
+      console.log(security)
+      let copyText = document.getElementById(data);
+      console.log(copyText)
+
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+
+      /* Alert the copied text */
+      alert("Copied the text: " + copyText.value);
+    }
+    </script>
+</head>
+<body>
+    <div class="container top-buffer">
+      <div class="row">
+        <div class="col-12">
+          <nav class="navbar fixed-top navbar-dark bg-info">
+            <a class="navbar-brand" href="/">
+              AD Users Folder Security Group
+            </a>
+            <img src="/static/kpc-logo.png" alt="kpc-logo" height="64px">
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-12">
+        <table class="table table-striped table-responsive-lg table-hover table-dark" id="table1">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col-9">Folder</th>
+              <th scope="col-12">Security Group</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% if res!="Not found" %}
+                {% for i in range(0, length) %}
+                <tr>
+                    <td style="word-wrap:break-word;min-width:150px; max-width:210px; text-align: left; vertical-align: middle;">{{ folder }}</td>
+                    <td><input type="text" value="{{res[i]}}" id="dir{{i}}" class="form-control"></td>
+                    <td id="back"><button onclick='copy("dir{{i}}")' class="btn btn-secondary">Copy text</button></td>
+                </tr>
+                {% endfor %}
+              {% else %}
+                <tr>
+                  <td style="word-wrap:break-word;min-width:150px; max-width:210px; text-align: left; vertical-align: middle;">{{ folder }}</td>
+                  <td style="text-align: center;">Not found</td>
+                  <td></td>
+                </tr>
+              {% endif %}
+          </tbody>
+      </table>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="row" id="back-button">
+              <a href="/" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Back</a>
+              <!-- <button type="button" class="btn btn-outline-primary">Primary</button> -->
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      </div>
+    </div>
+    <div class="container top-buffer">
+      <div class="row">
+          <div class="col-12">
+              <nav class="navbar fixed-bottom navbar-dark bg-info">
+                  <a class="navbar-brand" href="#">  
+                  </a>
+                  <div><span>Developed by: Kim @ IT-Ops KPC
+                  </span></div>
+              </nav>
+          </div>
+      </div>
+  </div>
+    
+</body>
+</html>

@@ -1,3 +1,4 @@
+from typing import final
 from flask import Flask, render_template, request, redirect, url_for
 import security as sec
 from pathlib import Path
@@ -5,7 +6,7 @@ from waitress import serve
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def home():
     return render_template("index.html")
 

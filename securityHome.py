@@ -24,6 +24,7 @@ def securityHome():
         Quota = []
         for j in range(len(temp)):
             tes = temp[j].split("  ")
+<<<<<<< HEAD
             Quota.append(tes[-1])     
         FSRM.append(Quota)
 
@@ -42,6 +43,13 @@ def securityHome():
         result.append(disk)
 
     return result
+=======
+            Quota.append(tes[-1])
+        
+        FSRM.append(Quota)
+        # print(temp[1].split())
+    print(FSRM)
+>>>>>>> 21087b2ffa417ab75e9c8b807a8a2d6074cd11e5
 
 print(securityHome())
 

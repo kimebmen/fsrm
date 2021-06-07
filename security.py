@@ -19,6 +19,5 @@ def security(s):
 
     new = [result[1], result[4], result[7], result[14], result[16], result[17], result[18], result[20], result[21], result[22], result[24], result[25], result[28], result[29], result[30]]
     return new
-# print(security("D:\Shares-G\\MSD\\160"))
-
+print(security("D:\Shares-G\\MSD\\160"))
 

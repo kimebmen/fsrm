@@ -1,14 +1,20 @@
 from typing import final
 from flask import Flask, render_template, request, redirect, url_for
 import security as sec
+import securityHome as secHome
 from pathlib import Path
 from waitress import serve
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def home():
-    return render_template("index.html")
+    try:
+        view_home = secHome.securityHome()
+    except:
+        view_home = "Not Found"
+
+    return render_template("index.html", res=view_home, length=len(view_home))
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():

@@ -11,34 +11,24 @@ def securityHome():
         "Thresholds:",
     ]
     s1 = subprocess.check_output(f'dirquota.exe q l  /remote:kpcsgt-fs03', shell=True)
+    # print(s1)
     s2 = s1.decode('utf-8')
     s2 = s2.split("\n\r")
-    stringlist = s2[2:]
-    tempS2 = s2
-    print(len(stringlist))
-    result = []
+    # s2 = s2.splitlines()
+    stringlist = s2[1:]
+    # print(stringlist.split("\r\n"))
+
+    FSRM = []
     for i in range(len(stringlist)):
-        temp = stringlist[i]
-        temp = temp.split("D:").split(":")
-        print(temp[i])
-        # result.append(temp1)
-
-    # result1 = []
-    # for i in range(len(result)):
-    #     temp1 = result[i]
-    #     temp1 = temp1.split(":")
-    #     result1.append(temp1)
-    
-    # print(result1)
-    # for i in range(len(result)):
-    #     del result[i][1]
-
-
-# quotapath, %used, limit, quotatype, source template
+        temp = stringlist[i].splitlines()
+        Quota = []
+        for j in range(len(temp)):
+            tes = temp[j].split("  ")
+            Quota.append(tes[-1])
         
-
-
-    return result[0][1]
+        FSRM.append(Quota)
+        # print(temp[1].split())
+    print(FSRM)
 
 print(securityHome())
 

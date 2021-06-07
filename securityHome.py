@@ -24,11 +24,24 @@ def securityHome():
         Quota = []
         for j in range(len(temp)):
             tes = temp[j].split("  ")
-            Quota.append(tes[-1])
-        
+            Quota.append(tes[-1])     
         FSRM.append(Quota)
-        # print(temp[1].split())
-    print(FSRM)
+
+
+    result = []
+    for i in range(len(FSRM)-1):
+        disk = {}
+        # for j in range(len(FSRM[i])):
+        disk["Path"] = FSRM[i][1].strip()
+        disk["SharePath"] = FSRM[i][3].strip()
+        disk["SourceTemplate"] = FSRM[i][4].strip()
+        disk["limit"] = FSRM[i][6].strip()
+        disk["Used"] = FSRM[i][7].strip()
+        disk["Available"] = FSRM[i][8].strip()
+        disk["Peak Usage"] = FSRM[i][9].strip()
+        result.append(disk)
+
+    return result
 
 print(securityHome())
 

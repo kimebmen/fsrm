@@ -33,6 +33,23 @@ def search():
 
     return render_template('result.html', folder=keyword, res=final, length=len(final))
 
+@app.route('/detail', methods=['GET', 'POST'])
+def detail():
+    if request.method == "POST":
+        try:
+            keyword = request.form["detail"]
+            new_keyword = Path(keyword).resolve()
+            f = open("C:\inetpub\wwwroot\Security_group_web\logs.txt", "w")
+            f.write(f"new key: {str(new_keyword)}")
+            f.close()
+            final = sec.security(new_keyword)
+        except:
+            final = "Not Found"
+    else:
+        return redirect(url_for('home'))
+
+    return render_template('result.html', folder=keyword, res=final, length=len(final))
+
 if __name__== '__main__':
-    #app.run(debug=False)
-    serve(app, host='0.0.0.0', port=5000, threads=1)
+    app.run(debug=False)
+    # serve(app, host='0.0.0.0', port=5000, threads=1)

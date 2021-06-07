@@ -16,7 +16,7 @@
 }
 
 .bg-info {
-    background-color: rgb(0, 183, 255) !important;
+    background-color: rgb(253, 253, 223) !important;
 }
 
 .row #back-button {
@@ -32,7 +32,9 @@ input {
     word-wrap: break-word;
     word-break: break-all;
 }
-
+a {
+    color: darkslategrayrgb(253, 253, 223);
+}
 /* .form-control {
     font-size: 0.9rem;
 } */
@@ -58,7 +60,7 @@ th {
 }
 
 body > div.container.top-buffer > div > div > nav > div > span {
-    color: whitesmoke;
+    color: darkslategray;
 }
 
 label {
@@ -75,10 +77,15 @@ body,html{
     height: 95%;
     margin: 0;
     padding: 0;
-    background-image: url(/static/bg3.jfif);
-    background-size: 100%;
+    /* background-color: rgb(145, 204, 241) !important; */
+    background-color: rgb(75, 166, 166) !important;
     background-repeat: no-repeat;
     color: whitesmoke;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
     }
 
     .searchbar{

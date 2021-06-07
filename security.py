@@ -1,23 +1,34 @@
 import subprocess
-from fnmatch import fnmatch
-from pathlib import Path
-
 
 def security(s):
     s1 = subprocess.check_output(f'dirquota.exe q l /path:{s} /remote:kpcsgt-fs03', shell=True)
     s2 = s1.decode('utf-8')
-    decoded_string = s2.split(f"{s}")
-    s4 = decoded_string[1]
-    s4 = s4.split()
-    stringlist = s4[0:]
+    s2 = s2.split("\n\r")
+    stringlist = s2[1:]
+
+    FSRM = []
+    for i in range(len(stringlist)):
+        temp = stringlist[i].splitlines()
+        Quota = []
+        for j in range(len(temp)):
+            tes = temp[j].split("  ")
+            Quota.append(tes[-1])     
+        FSRM.append(Quota)
 
     result = []
-    for i in range(len(stringlist)):
-        temp = stringlist[i]
-        temp = temp.split(":")
-        result.append(temp[0])
+    for i in range(len(FSRM)-1):
+        disk = {}
+        # for j in range(len(FSRM[i])):
+        disk["Path"] = FSRM[i][1].strip()
+        disk["SharePath"] = FSRM[i][3].strip()
+        disk["SourceTemplate"] = FSRM[i][4].strip()
+        disk["Limit"] = FSRM[i][6].strip()
+        disk["Used"] = FSRM[i][7].strip()
+        disk["Available"] = FSRM[i][8].strip()
+        disk["PeakUsage"] = FSRM[i][9].strip()
+        result.append(disk)
 
-    new = [result[1], result[4], result[7], result[14], result[16], result[17], result[18], result[20], result[21], result[22], result[24], result[25], result[28], result[29], result[30]]
-    return new
-print(security("D:\Shares-G\\MSD\\160"))
+    return result
+
+# print(security("D:\\Shares-G\\MKT\\500-MKTExtended"))
 

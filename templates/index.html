@@ -71,7 +71,7 @@
                 </thead>
                 <tbody>
                     
-                    {% if res[0]!=None %}
+                    {% if res!="Not Found" %}
                         {% for i in range(0, length) %}
                         <form class="card card-body" action="/detail" method="POST">
                         <tr>

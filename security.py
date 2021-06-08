@@ -1,7 +1,15 @@
+from re import sub
 import subprocess
 
 def security(s):
-    s1 = subprocess.check_output(f'dirquota.exe q l /path:{s} /remote:kpcsgt-fs03', shell=True)
+
+    # substring = "\\KPCSGT"
+
+    # if substring in s:
+    #     s = s[13:]
+    #     s1 = subprocess.check_output(f'dirquota.exe q l /path:D:{s} /remote:kpcsgt-fs03', shell=True) 
+    # else:
+    s1 = subprocess.check_output(f'dirquota.exe q l /path:{s} /remote:kpcsgt-fs03', shell=True)  
     s2 = s1.decode('utf-8')
     s2 = s2.split("\n\r")
     stringlist = s2[1:]

@@ -51,5 +51,5 @@ def detail():
     return render_template('result.html', folder=keyword, res=final, length=len(final))
 
 if __name__== '__main__':
-    app.run(debug=False)
-    # serve(app, host='0.0.0.0', port=5000, threads=1)
+    # app.run(debug=False)
+    serve(app, host='0.0.0.0', port=5000, threads=1)

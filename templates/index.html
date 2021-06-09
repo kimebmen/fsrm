@@ -1,19 +1,48 @@
 <!DOCTYPE html>
-<html>
-<link href="static/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/jquery.min.js"></script>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Server Resource Manager</title>
     <link rel="shortcut icon" href="/static/favicon.jpg">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/jquery.min.js"></script>
     <script src="static/stackpath/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="static/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="static/stackpath/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">\
     <link rel="stylesheet" href="static/style.css">
+
+    <link rel="stylesheet" type="text/css" href="static/css/4.5.2/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="static/css/1.10.25/dataTables.bootstrap4.min.css">    
+    <link rel="stylesheet" type="text/css" href="static/css/1.10.25/dataTables.bootstrap4.min.css">    
+
+    <script type="text/javascript" charset="utf8" src="static/js/1.10.25/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="static/js/1.10.25/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            let table = $('#dataTable').DataTable({
+                "lengthMenu": [50,100,150,200],
+                "columnDefs": [{"render": createManageBtn, "data": null, "targets": -1}],
+            });
+        } );
+    </script>
+    
+    <script type="text/javascript" charset="utf-8">
+
+        function createManageBtn() {
+            return "<button id='manageBtn' type='button' class='btn btn-secondary' onclick='myFunction();'>Detail</button>";
+        }
+        function myFunction() {
+            console.log("1111");
+            document.getElementById('#myForm').submit();
+        }
+    </script> 
 </head>
 
 <body>
@@ -32,37 +61,14 @@
     </div>
     
     <link rel="stylesheet" href="/static/css/5.1.0/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <div class="container">
-        <br />
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8">
-                <form class="card card-sm" action="/search" method="POST">
-                    <div class="card-body row no-gutters align-items-center">
-                        <div class="col-auto">
-                            <i class="fas fa-search h4 text-body"></i>
-                        </div>
-                        <!--end of col-->
-                        <div class="col">
-                            <input class="form-control form-control-lg form-control-borderless" type="search"
-                                placeholder="Input folder name" name="search">
-                        </div>
-                        <div class="col-auto">
-                            <button class="btn btn-lg btn-success" type="submit">Search</button>
-                        </div>
-                        <!--end of col-->
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     
     <div class="container">
         <div class="row">
             
-            <table class="table table-dark table-bordered table-hover table-sm">
+            <table id="dataTable" class="table table-dark table-bordered table-hover table-sm">
                 <thead>
                   <tr>
-                    <th scope="col">Path FS03</th>
+                    <th scope="col" style="text-align: center;">Path FS03</th>
                     <th scope="col">%Used</th>
                     <th scope="col">Limit</th>
                     <th scope="col">Available</th>
@@ -73,17 +79,23 @@
                     
                     {% if res!="Not Found" %}
                         {% for i in range(0, length) %}
-                        <form class="card card-body" action="/detail" method="POST">
+                        <form id="myForm" class="card card-body" action="/detail" method="POST">
                         <tr>
-                            <td><input type="search" value='{{res[i]["Path"]}}' class="form-control" name="detail" style="word-wrap:break-word; margin: 0; padding: 0 auto; text-align: left; vertical-align: middle;" readonly></td>
-                            <!-- <td><input type="search" value='{{res[i]["Path"]}}' class="form-control" name="search"></td> -->
+                            <td>
+                                <label class="form-control" style="word-wrap:break-word; margin: 0; padding: 0 auto; text-align: left; vertical-align: middle;" readonly>{{res[i]["Path"]}}
+                                    <input name="submit" type="submit" value='{{res[i]["Path"]}}' id="dir{{i}}" class="form-control"hidden>
+                                </label>
+                            </td>
                             <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["Used"]}}</td>
                             <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["Limit"]}}</td>
                             <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["Available"]}}</td>
-                            
-                            <td><button class="btn btn-secondary" type="submit">Detail</button></td>
+                            <!-- <input type="text" value='{{res[i]["Path"]}}' id="dir{{i}}" class="form-control"hidden> -->
+                            <!-- <td><button class="btn btn-secondary"><a href="javascript:;" onclick="document.getElementById('myForm').submit();">Detail</a></button></td> -->
+                            <td></td>
+                            <!-- <button id="manageBtn" type="button" class="btn btn-secondary" onclick="myFunction()">Detail</button> -->
                         </tr>  
-                        </form>                   
+                        </form>
+                                          
                         {% endfor %}
                     {% else %}
                         <tr>
@@ -112,6 +124,8 @@
                 </nav>
             </div>
         </div>
-    </div> 
+    </div>
+
+     
 </body>
 </html>

@@ -37,11 +37,9 @@ def search():
 def detail():
     if request.method == "POST":
         try:
-            keyword = request.form["detail"]
+            keyword = request.form["direct"]
+            print(keyword)
             new_keyword = Path(keyword).resolve()
-            f = open("C:\inetpub\wwwroot\Security_group_web\logs.txt", "w")
-            f.write(f"new key: {str(new_keyword)}")
-            f.close()
             final = sec.security(new_keyword)
         except:
             final = "Not Found"

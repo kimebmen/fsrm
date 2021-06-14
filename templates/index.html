@@ -19,23 +19,21 @@
     <link rel="stylesheet" href="static/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">\
     <link rel="stylesheet" href="static/style.css">
 
-    <link rel="stylesheet" type="text/css" href="static/css/4.5.2/bootstrap.css">
+    <!-- <link rel="stylesheet" type="text/css" href="static/css/4.5.2/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="static/css/1.10.25/dataTables.bootstrap4.min.css">    
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">     -->
+    <script type="text/javascript" charset="utf8" src="static/js/1.10.25/jquery.dataTables.min.js"></script>
+
 
     <script type="text/javascript" charset="utf8" src="static/js/1.10.25/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="static/js/1.10.25/jquery.dataTables.min.js"></script>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
-           let data = $('#dataTable').DataTable({
+           $('#dataTable').DataTable({
                 "lengthMenu": [50,100,150,200],
-                "columnDefs": [
-                    {type: 'file-size', targets:5}
-                ],
                 "order": [[4, "asc"]]
             });
-            
+           
             // $('#dataTable tbody').on( 'click', 'button', function () {
             //     let data = table.row( $(this).parents('tr') ).data();
             //     // window.location.href = '/detail';
@@ -45,8 +43,22 @@
         } );
     </script>
     
-    <!-- <script type="text/javascript" charset="utf-8">
+    
+    <!-- <script>
+    function loadingButton(data){
+        console.log("1111");
+        console.log(data);
+        $(data).click(function() {
+        // disable button
+        $(this).prop("disabled", false);
+        // add spinner to button
+        // return '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...'
+        $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
+        });
+    }
+    </script> -->
 
+    <!-- <script>
         function createManageBtn() {
             return "<button id='manageBtn' type='button' class='btn btn-secondary' onclick='myFunction();'>Detail</button>";
         }
@@ -104,7 +116,7 @@
                             <td>
                                 <form action="/detail" name="direct" method="POST">
                                     <input type="hidden" name="direct" value="{{res[i]['Path']}}">
-                                    <input class="btn-secondary" type="submit" value="Detail">
+                                    <button id="btnFetch{{i}}" onclick='loadingButton("#btnFetch{{i}}")' class="btn-secondary btn-xs" type="submit">Detail</button>
                                 </form>
                             </td>
                         </tr>                                            

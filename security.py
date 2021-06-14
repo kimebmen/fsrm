@@ -3,7 +3,7 @@ import subprocess
 
 def security(s):
 
-    s1 = subprocess.check_output(f'dirquota.exe q l /path:{s} /remote:kpcsgt-fs03', shell=True)  
+    s1 = subprocess.check_output(f'dirquota.exe q l /path:"{s}" /remote:kpcsgt-fs03', shell=True)  
     s2 = s1.decode('utf-8')
     s2 = s2.split("\n\r")
     stringlist = s2[1:]

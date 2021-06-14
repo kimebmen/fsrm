@@ -14,7 +14,7 @@ def home():
     except:
         view_home = "Not Found"
 
-    return render_template("index.html", res=view_home, length=len(view_home))
+    return render_template("index.html", res=view_home, lengthh=len(view_home))
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():

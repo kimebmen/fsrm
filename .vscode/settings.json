@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "C:\\Program Files\\Python39\\python.exe"
-    // "python.pythonPath": "d:\\kimebmen\\project\\python\\fsrm\\venv\\scripts\\python.exe"
+    // "python.pythonPath": "C:\\Program Files\\Python39\\python.exe"
+    "python.pythonPath": "d:\\kimebmen\\project\\python\\fsrm\\venv\\scripts\\python.exe"
 }

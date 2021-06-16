@@ -6,8 +6,8 @@ import fs02 as fs02
 import fs02Home as fs02Home
 import fs03 as fs03
 import fs03Home as fs03Home
-import fsx as fs0x
-import fsxHome as fs0xHome
+import fsx as fsx
+import fsxHome as fsxHome
 import archive as archive
 import archiveHome as archiveHome
 from pathlib import Path
@@ -155,5 +155,5 @@ def detailarchive():
 
 
 if __name__== '__main__':
-    app.run(debug=False)
-    # serve(app, host='0.0.0.0', port=5000, threads=1)
+    # app.run(debug=False)
+    serve(app, host='0.0.0.0', port=5000, threads=1)

@@ -1,7 +1,7 @@
 import subprocess
 
-def securityHome():
-    s1 = subprocess.check_output(f'dirquota.exe q l  /remote:kpcsgt-fs03', shell=True)
+def fs02Home():
+    s1 = subprocess.check_output(f'dirquota.exe q l  /remote:kpcsgt-fs02', shell=True)
     s2 = s1.decode('utf-8')
     s2 = s2.split("\n\r")
     stringlist = s2[1:]

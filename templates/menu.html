@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Server Resource Manager</title>
-    <meta http-equiv="refresh" content="30">
+    
     <link rel="shortcut icon" href="/static/favicon.jpg">
 
     <link href="static/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -93,14 +93,6 @@
         </div>
     </div>
 
-    <!-- <div id="loader-wrapper">
-        <div id="loader"></div>
-     
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-     
-    </div> -->
-
     <div class="container top-buffer">
         <div class="row">
             <div class="col-12">
@@ -114,55 +106,26 @@
             </div>
         </div>
     </div>
-    
-    <!-- <link rel="stylesheet" href="/static/css/5.1.0/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"> -->
-    
-    <div class="container" id="content">
-        <div class="row">
-            
-            <table id="dataTable" class="table table-dark table-bordered table-hover table-sm">
-                <thead>
-                  <tr>
-                    <th scope="col" style="text-align: center;">Path FS03</th>
-                    <th scope="col">Used (GB)</th>
-                    <th scope="col">% Used</th>
-                    <th scope="col">Limit (GB)</th>
-                    <!-- <th scope="col">Quota Type</th> -->
-                    <th scope="col">Available (GB)</th>
-                    <th scope="col">More Detail</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    
-                    {% if res!="Not Found" %}
-                        {% for i in range(0, lengthh) %}
-                            
-                        <tr>
-                            <td> {{res[i]["Path"]}} </td>
-                            <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["Used"]}}</td>
-                            <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["UsedPercent"]}}</td>
-                            <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["Limit"]}}</td>
-                            <!-- <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["QuotaType"]}}</td> -->
-                            <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["Available"]}}</td>
-                            <td>
-                                <form action="/detail" name="direct" method="POST">
-                                    <input type="hidden" name="direct" value="{{res[i]['Path']}}">
-                                    <button id="btnFetch{{i}}" onclick='loadingButton("#btnFetch{{i}}")' class="btn-secondary btn-xs" type="submit">Detail</button>
-                                </form>
-                            </td>
-                        </tr>                                            
-                        {% endfor %}
-                    {% else %}
-                        <tr>
-                            <td style="word-wrap:break-word;min-width:150px; max-width:210px; text-align: left; vertical-align: middle;">{{ folder }}</td>
-                            <td style="text-align: center;">Not found</td>
-                            <td></td>
-                        </tr>
-                    {% endif %}
-               
-                </tbody>
-            </table>
-            
+        
+    <div class="container">
+        <div class="myrow">
+            <div id="select">
+                <p class="options menu" >
+                    <a class="menuq" href="{{ url_for('homefs01') }}">KPCSGT-FS01</a>
+                </p>
+                <p class="options menu" >
+                    <a class="menuq" href="{{ url_for('homefs02') }}">KPCSGT-FS02</a>
+                </p>
+                <p class="options menu" >
+                    <a class="menuq" href="{{ url_for('homefs03') }}">KPCSGT-FS03</a>
+                </p>
+                <p class="options menu" >
+                    <a class="menuq" href="{{ url_for('homefsx') }}">KPCSGT-FSX</a>
+                </p>
+                <p class="options menu" >
+                    <a class="menuq" href="{{ url_for('homearchive') }}">KPCSGT-ARCHIVE</a>
+                </p>
+            </div>
         </div>
               
     </div>

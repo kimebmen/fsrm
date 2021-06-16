@@ -145,7 +145,7 @@
                             <!-- <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["QuotaType"]}}</td> -->
                             <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["Available"]}}</td>
                             <td>
-                                <form action="/detail" name="direct" method="POST">
+                                <form action="/detailfsx" name="direct" method="POST">
                                     <input type="hidden" name="direct" value="{{res[i]['Path']}}">
                                     <button id="btnFetch{{i}}" onclick='loadingButton("#btnFetch{{i}}")' class="btn-secondary btn-xs" type="submit">Detail</button>
                                 </form>

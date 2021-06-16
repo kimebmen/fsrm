@@ -305,3 +305,68 @@ h1 {
 }
 
 
+.myrow{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#select {
+    color: #fff;
+    /* float: left; */
+    height: 188px;
+    width: 631px;
+    display: contents;
+    flex-wrap: nowrap;
+    
+}
+/* #select p.options.menu{
+  margin:50px;
+  margin-right:10px;
+} */
+#select p.options.menu {
+    color: #FFFFFF;
+    /* float: left; */
+    font-family: 'ComfortaaBold',cursive;
+    /* font-size: 15px; */
+    /* height: 100%;
+    margin: 0 auto; */
+    text-align: center;
+    width: 20%;  
+    margin-top: 50px;
+    /* margin-bottom: 50px; */
+    margin-right: 20px;
+    /* height: 20px; */
+}
+p.options.menu {
+    /* align-items: center; */
+    background: none repeat scroll 0 0 #EBEBEB;
+    border-radius: 10px;
+    
+    /* border-right: 50px; */
+    display: flex;
+    /* justify-content: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 50px; */
+}
+
+#select p.options a {
+    color: #636363;
+    padding: 23px;
+    text-decoration: none;
+    display:block;
+    width:150px;
+    box-sizing: content-box;
+}
+#select p.options a:hover {
+    color: #FFFFFF;
+}
+p.options.menu:hover {
+    background-color: #00AEEF !important;
+}
+a.menuq {
+    /* height: 100%; */
+    width: 100%;
+
+}
+

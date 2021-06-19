@@ -27,9 +27,16 @@
         // add spinner to button
         $(this).html(
           `<span class="spinner-border spinner-border-bg"></span> Loading...`
-        );
-    });
-});
+              );
+          });
+      });
+    </script>
+
+    <script language="javascript" type="text/javascript">
+      function windowClose() {
+        window.open('','_parent','');
+        window.close();
+      }
     </script>
 </head>
 <body>
@@ -92,7 +99,7 @@
           <div class="col-12">
             <div class="row" id="back-button">
               <!-- <a href="/" id="btnFetch" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Back</a> -->
-              <button id="btnFetch" onclick="window.location.href='/fs03'" type="button" class="btn btn-primary btn-lg" aria-pressed="true">Back</button>
+              <input id="btnFetch" value="Close" onclick="windowClose();" type="button" class="btn btn-primary btn-lg" aria-pressed="true"></input>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import subprocess
+import re
 
 def fs03Home():
     s1 = subprocess.check_output(f'dirquota.exe q l  /remote:kpcsgt-fs03', shell=True)
@@ -19,12 +20,18 @@ def fs03Home():
     for i in range(len(FSRM)-1):
         disk = {}
         findLen = len(FSRM[i][1])
-        print(findLen)
+        # print(findLen)
+        FSRM[i][1] = " ".join(FSRM[i][1])
+        FSRM[i][1] = re.sub('Quota Path: ','', str(FSRM[i][1]))
+        disk["Path"] = FSRM[i][1]
+        # print(FSRM[i][1])
 
-        if findLen > 3:
-            disk["Path"] = FSRM[i][1][2]+' '+FSRM[i][1][3]
-        else:
-            disk["Path"] = FSRM[i][1][-1]
+        # if findLen > 3:
+        #     print(FSRM[i][1])
+        #     disk["Path"] = FSRM[i][1][2]+' '+FSRM[i][1][3]
+        #     print(disk["Path"])
+        # else:
+        #     disk["Path"] = FSRM[i][1][-1]
 
 
         # for j in range(len(FSRM[i])):
@@ -34,6 +41,7 @@ def fs03Home():
         # disk["SourceTemplate"] = FSRM[i][4][2].strip()
         # disk["SourceTemplateDetail"] = FSRM[i][4][3:].strip()
 
+        FSRM[i][6][1] = re.sub(',','', str(FSRM[i][6][1]))
         sizeLimit = FSRM[i][6][2]
         if sizeLimit == 'MB':
             n = float(FSRM[i][6][1])*0.001
@@ -55,6 +63,7 @@ def fs03Home():
         # disk["Limit"] = FSRM[i][6][1]+FSRM[i][6][2]
         # disk["QuotaType"] = FSRM[i][6][3]
         
+        FSRM[i][7][1] = re.sub(',','', str(FSRM[i][7][1]))
         sizeUsed = FSRM[i][7][2]
         if sizeUsed == 'MB':
             m = float(FSRM[i][7][1])*0.001
@@ -75,7 +84,8 @@ def fs03Home():
         # disk["Used"] = FSRM[i][7][1]+FSRM[i][7][2]
 
         disk["UsedPercent"] = FSRM[i][7][3]
-        
+
+        FSRM[i][8][1] = re.sub(',','', str(FSRM[i][8][1]))
         sizeAvail = FSRM[i][8][2]
         if sizeAvail == 'MB':
             o = float(FSRM[i][8][1])*0.001
@@ -103,8 +113,5 @@ def fs03Home():
     return result
 
 
-def sorting():
-    pass
-
-# print(securityHome())
+# print(fs03Home())
 

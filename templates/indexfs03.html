@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Server Resource Manager</title>
-    <!-- <meta http-equiv="refresh" content="30"> -->
+    <meta http-equiv="refresh" content="600">
     <link rel="shortcut icon" href="/static/favicon.jpg">
 
     <link href="static/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -105,29 +105,15 @@
         <div class="row">
             <div class="col-12">
                 <nav class="navbar fixed-top navbar-dark bg-info">
-                    <tr>
-                        <a class="navbar-brand" href="/">  
-                            <tr>
-                                <img src="/static/kpc-logo.png" alt="kpc-logo" height="64px">
-                            </tr>
-                            <tr >
-                                <button type="button" class="btn btn-info btn-lg">Home</button>
-                            </tr>     
-                        </a>
-                    </tr>
-                    <tr>
-                        <a class="navbar-brand" href="/">  
-                            File Server Resource Manager
-                        </a>
-                    </tr>
-                    
-                    
-
+                    <a class="navbar-brand" href="/">  
+                        <img src="/static/kpc-logo.png" alt="kpc-logo" height="64px" ="#">
+                        File Server Resource Manager
+                    </a>
                     
                 </nav>
             </div>
         </div>
-    </div>
+      </div>
     <div class="container" style="margin: 30px;">
 
     </div>
@@ -140,7 +126,7 @@
                 
                 <thead>
                   <tr>
-                    <th scope="col" style="text-align: center;">Path FS03</th>
+                    <th scope="col" style="text-align: center;">Path KPCSGT-FS03</th>
                     <th scope="col">Used (GB)</th>
                     <th scope="col">% Used</th>
                     <th scope="col">Limit (GB)</th>
@@ -152,7 +138,7 @@
                 <tbody>
                     
                     {% if res!="Not Found" %}
-                        {% for i in range(0, lengthh) %}
+                        {% for i in range(0, length) %}
                             
                         <tr>
                             <td> {{res[i]["Path"]}} </td>
@@ -162,7 +148,7 @@
                             <!-- <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["QuotaType"]}}</td> -->
                             <td style="word-wrap:break-word;min-width:100px; max-width:100px; text-align: left; vertical-align: middle;">{{res[i]["Available"]}}</td>
                             <td>
-                                <form action="/detailfs03" name="direct" method="POST">
+                                <form action="/detailfs03" name="direct" method="POST" target="_blank">
                                     <input type="hidden" name="direct" value="{{res[i]['Path']}}">
                                     <button id="btnFetch{{i}}" onclick='loadingButton("#btnFetch{{i}}")' class="btn-secondary btn-xs" type="submit">Detail</button>
                                 </form>

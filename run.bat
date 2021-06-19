@@ -1,0 +1,1 @@
+C:\Web\fsrm\venv\Scripts\pythonw.exe C:\Web\fsrm\app.py

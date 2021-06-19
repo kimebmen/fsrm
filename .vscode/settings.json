@@ -1,4 +1,15 @@
 {
     // "python.pythonPath": "C:\\Program Files\\Python39\\python.exe"
-    "python.pythonPath": "d:\\kimebmen\\project\\python\\fsrm\\venv\\scripts\\python.exe"
+    "python.pythonPath": "d:\\kimebmen\\project\\python\\revisi\\4\\fsrm\\venv\\scripts\\python.exe",
+    // "liveServer.settings.host": "127.0.0.1",
+    // "liveServer.settings.port": 5000,
+    // "liveServer.settings.ignoreFiles": [
+
+    //     ".vscode/**",
+    //     "**/*.scss",
+    //     "**/*.sass",
+    //     "**/*.ts"
+    // ],
+    // "liveServer.settings.ChromeDebuggingAttachment": false,
+    // "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
 }

@@ -22,7 +22,7 @@ app = Flask(__name__)
 #     except:
 #         view_home = "Not Found"
 
-#     return render_template("index.html", res=view_home, lengthh=len(view_home))
+#     return render_template("index.html", res=view_home, length=len(view_home))
 
 @app.route('/')
 def home():
@@ -36,7 +36,7 @@ def homefs03():
     except:
         view_home = "Not Found"
 
-    return render_template("indexfs03.html", res=view_home, lengthh=len(view_home))
+    return render_template("indexfs03.html", res=view_home, length=len(view_home))
 
 @app.route('/detailfs03', methods=['GET', 'POST'])
 def detailfs03():
@@ -46,8 +46,9 @@ def detailfs03():
             print(keyword)
             new_keyword = Path(keyword).resolve()
             final = fs03.fs03(new_keyword)
-        except:
+        except Exception as e:
             final = "Not Found"
+            print(e)
     else:
         return redirect(url_for('homefs03'))
 
@@ -61,7 +62,7 @@ def homefs01():
     except:
         view_home = "Not Found"
 
-    return render_template("indexfs01.html", res=view_home, lengthh=len(view_home))
+    return render_template("indexfs01.html", res=view_home, length=len(view_home))
 
 @app.route('/detailfs01', methods=['GET', 'POST'])
 def detailfs01():
@@ -71,8 +72,9 @@ def detailfs01():
             print(keyword)
             new_keyword = Path(keyword).resolve()
             final = fs01.fs01(new_keyword)
-        except:
+        except Exception as e:
             final = "Not Found"
+            print(e)
     else:
         return redirect(url_for('homefs01'))
 
@@ -86,7 +88,7 @@ def homefs02():
     except:
         view_home = "Not Found"
 
-    return render_template("indexfs02.html", res=view_home, lengthh=len(view_home))
+    return render_template("indexfs02.html", res=view_home, length=len(view_home))
 
 @app.route('/detailfs02', methods=['GET', 'POST'])
 def detailfs02():
@@ -96,8 +98,9 @@ def detailfs02():
             print(keyword)
             new_keyword = Path(keyword).resolve()
             final = fs02.fs02(new_keyword)
-        except:
+        except Exception as e:
             final = "Not Found"
+            print(e)
     else:
         return redirect(url_for('homefs02'))
 
@@ -111,7 +114,7 @@ def homefsx():
     except:
         view_home = "Not Found"
 
-    return render_template("indexfsx.html", res=view_home, lengthh=len(view_home))
+    return render_template("indexfsx.html", res=view_home, length=len(view_home))
 
 @app.route('/detailfsx', methods=['GET', 'POST'])
 def detailfsx():
@@ -121,8 +124,9 @@ def detailfsx():
             print(keyword)
             new_keyword = Path(keyword).resolve()
             final = fsx.fsx(new_keyword)
-        except:
+        except Exception as e:
             final = "Not Found"
+            print(e)
     else:
         return redirect(url_for('homefsx'))
 
@@ -136,7 +140,7 @@ def homearchive():
     except:
         view_home = "Not Found"
 
-    return render_template("indexarchive.html", res=view_home, lengthh=len(view_home))
+    return render_template("indexarchive.html", res=view_home, length=len(view_home))
 
 @app.route('/detailarchive', methods=['GET', 'POST'])
 def detailarchive():
@@ -146,8 +150,9 @@ def detailarchive():
             print(keyword)
             new_keyword = Path(keyword).resolve()
             final = archive.archive(new_keyword)
-        except:
+        except Exception as e:
             final = "Not Found"
+            print(e)
     else:
         return redirect(url_for('homearchive'))
 
@@ -156,4 +161,4 @@ def detailarchive():
 
 if __name__== '__main__':
     # app.run(debug=False)
-    serve(app, host='0.0.0.0', port=5000, threads=1)
+    serve(app, host='0.0.0.0', port=8081, threads=1)

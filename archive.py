@@ -30,9 +30,9 @@ def archive(s):
         disk["Available"] = FSRM[i][8].strip()
         disk["PeakUsage"] = FSRM[i][9].strip()
         result.append(disk)
-
+    # print(result)
     return result
 
-# print(security("D:\\Shares-G\\MKT\\500-MKTExtended"))
+# print(archive("D:\\Shares-H\\MDD\\575-CivilMPMaster"))
 
     

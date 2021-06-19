@@ -33,6 +33,6 @@ def fs03(s):
 
     return result
 
-# print(security("D:\\Shares-G\\MKT\\500-MKTExtended"))
+# print(fs03("D:\\Shares-G\\MKT\\500-MKTExtended"))
 
     

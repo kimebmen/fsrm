@@ -2,7 +2,7 @@ from re import sub
 import subprocess
 
 def fs01(s):
-
+    print(s)
     s1 = subprocess.check_output(f'dirquota.exe q l /path:"{s}" /remote:kpcsgt-fs01', shell=True)  
     s2 = s1.decode('utf-8')
     s2 = s2.split("\n\r")
@@ -33,6 +33,7 @@ def fs01(s):
 
     return result
 
-# print(security("D:\\Shares-G\\MKT\\500-MKTExtended"))
+# print(fs01("D:\Shares-A\Minex_Common\STP-CMDTHIESS"))
+# print(fs01("D:\\Shares-A\\Minex_Common\\STP-CMDTHIESS"))
 
     
